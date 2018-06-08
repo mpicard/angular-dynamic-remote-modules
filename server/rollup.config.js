@@ -1,19 +1,21 @@
 import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 
 export default {
-  entry: './src/widget/widget.module.ts',
+  input: './src/widget/widget.module.ts',
   output: {
     format: 'system',
-    file: './dist/bundle.js'
+    file: './dist/bundle.js',
+    sourcemap: true
   },
   plugins: [
-    typescript(),
     resolve({
+      browser: true,
       customResolveOptions: {
         moduleDirectory: 'node_modules'
       }
-    })
+    }),
+    typescript()
   ],
-  external: ['@angular/core', '@angular/common', 'rxjs']
+  external: ['@angular/core']
 };

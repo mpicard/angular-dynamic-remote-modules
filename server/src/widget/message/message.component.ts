@@ -3,14 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-message',
   template: `
-    <p>
+    <p *ngIf="a">
       message works!
     </p>
   `,
   styles: []
 })
 export class MessageComponent implements OnInit {
-  constructor() {}
+  a = true;
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('Woo!');
+  }
 }

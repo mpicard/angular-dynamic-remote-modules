@@ -18,13 +18,21 @@ export function createCompiler(cf: CompilerFactory) {
   imports: [BrowserModule],
   bootstrap: [AppComponent],
   providers: [
-    { provide: COMPILER_OPTIONS, useValue: {}, multi: true },
+    {
+      provide: COMPILER_OPTIONS,
+      useValue: {},
+      multi: true
+    },
     {
       provide: CompilerFactory,
       useClass: JitCompilerFactory,
       deps: [COMPILER_OPTIONS]
     },
-    { provide: Compiler, useFactory: createCompiler, deps: [CompilerFactory] }
+    {
+      provide: Compiler,
+      useFactory: createCompiler,
+      deps: [CompilerFactory]
+    }
   ]
 })
 export class AppModule {}

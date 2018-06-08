@@ -1,13 +1,13 @@
 {
   "name": "remote-module-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "prestart": "yarn run build",
+    "start": "http-server -p 8080 --cors dist",
     "prebuild": "rm -rf dist",
-    "build": "webpack -c webpack.config.js",
-    "rollup": "rollup -c rollup.config.js",
-    "start": "http-server -p 8080 --cors dist"
+    "build": "rollup -c rollup.config.js"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "rollup-plugin-typescript2": "^0.14.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -28,11 +29,8 @@
     "@angular/cli": "1.6.6",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
-    "awesome-typescript-loader": "^3.4.1",
     "rollup": "^0.60.1",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-typescript": "^0.8.1",
-    "typescript": "~2.5.3",
-    "webpack": "^3.10.0"
+    "typescript": "~2.5.3"
   }
 }
